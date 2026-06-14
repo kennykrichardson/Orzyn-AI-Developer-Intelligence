@@ -96,7 +96,7 @@ packages/
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/kennykrichardson/Orzyn-AI-Developer-Intelligence
 cd orzyn-ai
 ```
 
