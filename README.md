@@ -71,19 +71,67 @@ packages/
 * TypeScript
 * Vite
 * Tailwind CSS
+* React Router
 * Recharts
 * Sonner
+* Lucide React
 
 ### ⚙️ Backend
 
 * FastAPI
 * Python
+* Pydantic
 * SQLAlchemy
 * Alembic
+* Uvicorn
 
 ### 🗄️ Database
 
 * SQLite
+* Repository Analytics Storage
+* Historical Snapshot Storage
+
+### 🤖 AI & Analytics
+
+* Repository Intelligence Engine
+* Contributor Risk Analysis
+* Engineering Velocity Analysis
+* Productivity Scoring
+* Health Score Calculation
+* Forecasting Engine
+* AI Report Generation
+* Executive Summary Generation
+
+### 🔗 Data Sources
+
+* GitHub REST API
+* Repository Metadata
+* Commit History
+* Contributor Activity
+* Repository Statistics
+
+### 📊 Data Visualization
+
+* Recharts
+* Interactive Dashboards
+* Trend Analysis
+* Forecasting Visualizations
+* Repository Comparison Analytics
+
+### 🏗️ Monorepo Architecture
+
+* Turborepo
+* pnpm Workspaces
+
+### 🔧 Developer Tooling
+
+* Git
+* GitHub
+* VS Code
+* ESLint
+* TypeScript
+* Prettier
+
 
 ### 🔗 External Services
 
@@ -96,7 +144,7 @@ packages/
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/kennykrichardson/Orzyn-AI-Developer-Intelligence
 cd orzyn-ai
 ```
 
