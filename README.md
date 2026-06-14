@@ -115,6 +115,10 @@ pnpm dev
 ### 4️⃣ Start Backend
 
 ```bash
+.venv\scripts\activate
+```
+
+```bash
 uvicorn apps.api.main:app --reload
 ```
 
