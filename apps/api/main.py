@@ -8,12 +8,17 @@ from apps.api.routes.history import router as history_router
 from apps.api.routes.trends import router as trends_router
 from apps.api.routes.comparison import router as comparison_router
 from apps.api.routes.insights import router as insights_router
+from packages.database.engine import engine
+from packages.database.engine import Base
+import packages.database.models
 
 app = FastAPI(
     title="Orzyn AI",
     description="AI-powered Developer Intelligence Platform",
     version="0.1.0",
 )
+
+Base.metadata.create_all(bind=engine)
 
 # Register all routers
 app.include_router(repositories_router)
