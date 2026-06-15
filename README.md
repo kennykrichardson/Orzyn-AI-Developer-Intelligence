@@ -145,7 +145,7 @@ packages/
 
 ```bash
 git clone https://github.com/kennykrichardson/Orzyn-AI-Developer-Intelligence
-cd orzyn-ai
+cd orzyn-ai-developer-intelligence
 ```
 
 ### 2️⃣ Install Dependencies
