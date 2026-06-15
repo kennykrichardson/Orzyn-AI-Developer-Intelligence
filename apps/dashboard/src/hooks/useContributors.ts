@@ -31,7 +31,7 @@ export function useContributors(
 
         const response =
           await fetch(
-            `http://localhost:8000/contributors/${owner}/${repo}`
+            `https://orzyn-api.onrender.com/contributors/${owner}/${repo}`
           );
 
         const data =

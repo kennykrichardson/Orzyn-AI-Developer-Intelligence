@@ -23,7 +23,7 @@ export default function ContributorsList() {
     async function load() {
       const response =
         await fetch(
-          `http://localhost:8000/contributors/${owner}/${repo}`
+          `https://orzyn-api.onrender.com/contributors/${owner}/${repo}`
         );
 
       const data =

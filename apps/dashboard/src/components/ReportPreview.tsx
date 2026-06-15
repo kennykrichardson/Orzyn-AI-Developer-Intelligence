@@ -44,7 +44,7 @@ export default function ReportPreview() {
 
         const response =
           await fetch(
-            `http://localhost:8000/reports/${owner}/${repo}`
+            `https://orzyn-api.onrender.com/reports/${owner}/${repo}`
           );
 
         const data =

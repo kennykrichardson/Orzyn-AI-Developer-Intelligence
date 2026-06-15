@@ -38,7 +38,7 @@ export function useTrends(
 
         const response =
           await axios.get(
-            `http://localhost:8000/analytics/trends/${owner}/${repo}`
+            `https://orzyn-api.onrender.com/analytics/trends/${owner}/${repo}`
           );
 
         const data =

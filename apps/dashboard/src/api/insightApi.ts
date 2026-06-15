@@ -3,7 +3,7 @@ import {
 } from "../types/analytics";
 
 const API_BASE =
-  "http://localhost:8000";
+  "https://orzyn-api.onrender.com";
 
 export async function getInsights(
   owner: string,
