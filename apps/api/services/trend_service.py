@@ -45,7 +45,13 @@ def get_repository_trends(
         )
 
         if not repository:
-            return None
+            return {
+                "repository_id": 0,
+                "productivity_growth": 0,
+                "health_growth": 0,
+                "productivity_trend": "stable",
+                "health_trend": "stable",
+            }
 
         snapshots = (
             get_snapshots(
