@@ -39,7 +39,7 @@ if (!owner || !repo) {
         text-xl
         "
         >
-        Search for a respository...
+        Search for a repository...
         </div>
     </DashboardLayout>
   );
