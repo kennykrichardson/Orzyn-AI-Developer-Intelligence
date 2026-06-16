@@ -75,11 +75,9 @@ def generate_repository_summary(
     analytics_data,
 ):
     prompt = f"""
-You are a senior engineering manager and software architect.
+You are a senior engineering manager reviewing a GitHub repository.
 
-Analyze this GitHub repository.
-
-Repository:
+Repository Name:
 {repository_data.name}
 
 Description:
@@ -94,65 +92,51 @@ Stars:
 Forks:
 {repository_data.forks}
 
-Health Score:
-{analytics_data.health_score}
+Metrics:
 
-Productivity Score:
-{analytics_data.productivity_score}
+Health Score: {analytics_data.health_score}
+Productivity Score: {analytics_data.productivity_score}
+Velocity Score: {analytics_data.velocity_score}
+Risk Score: {analytics_data.risk_score}
+Bus Factor: {analytics_data.bus_factor}
 
-Velocity Score:
-{analytics_data.velocity_score}
+Create a concise executive summary.
 
-Risk Score:
-{analytics_data.risk_score}
+Focus on:
+- What the repository does
+- Its strongest qualities
+- What the engineering metrics indicate
+- Key improvement opportunities
 
-Bus Factor:
-{analytics_data.bus_factor}
-
-IMPORTANT:
-
-Begin by explaining what this repository does.
-
-Describe its purpose, goals, and value proposition.
-
-Start with positive observations and strengths before discussing weaknesses or risks.
-
-Do not assume that a single contributor automatically indicates a poor repository.
-
-Treat solo-maintained repositories fairly.
-
-Return your response in Markdown:
+Return ONLY valid markdown using EXACTLY this structure:
 
 # Repository Overview
-   - Explain what the repository is.
-   - Explain what problem it solves.
-   - Highlight notable features.
+
+A short paragraph explaining the repository and its purpose.
 
 # Key Strengths
-   - Technical strengths.
-   - Architectural strengths.
-   - Positive engineering signals.
+
+- Strength 1
+- Strength 2
+- Strength 3
 
 # Engineering Assessment
-   - Discuss Health Score.
-   - Discuss Productivity Score.
-   - Discuss Velocity Score.
-   - Explain what these scores mean.
 
-# Risk Assessment
-   - Explain risks.
-   - Explain mitigating factors.
-   - Avoid alarmist language.
+A short paragraph interpreting the metrics.
 
 # Recommendations
-   - Prioritized improvements.
-   - Short-term opportunities.
-   - Long-term opportunities.
 
-Use markdown headings.
-Use bullet points for lists.
-Leave a blank line between sections.
-Keep paragraphs short.
+- Recommendation 1
+- Recommendation 2
+- Recommendation 3
+
+Rules:
+- Be positive before discussing weaknesses.
+- Do not mention every metric individually.
+- Do not repeat numbers unnecessarily.
+- Keep the entire response under 300 words.
+- Use markdown headings beginning with #.
+- Use markdown bullet lists beginning with -.
 """
 
     return _call_ai(prompt)
