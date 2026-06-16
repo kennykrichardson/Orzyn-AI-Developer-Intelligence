@@ -153,6 +153,56 @@ Keep the response professional, concise, and actionable.
 
     return _call_ai(prompt)
 
+def generate_repository_insights(
+    repository_data,
+    analytics_data,
+):
+    prompt = f"""
+You are a senior engineering manager.
+
+Repository:
+{repository_data.name}
+
+Description:
+{repository_data.description}
+
+Language:
+{repository_data.language}
+
+Health Score:
+{analytics_data.health_score}
+
+Productivity Score:
+{analytics_data.productivity_score}
+
+Velocity Score:
+{analytics_data.velocity_score}
+
+Risk Score:
+{analytics_data.risk_score}
+
+Bus Factor:
+{analytics_data.bus_factor}
+
+Generate 5 concise engineering insights.
+
+Each insight should be:
+
+- Practical
+- Specific
+- Repository-focused
+- One sentence
+
+Return ONLY bullet points.
+"""
+
+    result = _call_ai(prompt)
+
+    return [
+        line.replace("-", "").strip()
+        for line in result.split("\n")
+        if line.strip()
+    ]
 
 def generate_risk_assessment(
     repository_data,
@@ -272,3 +322,4 @@ def create_ai_report(
             f"Bus Factor: {metrics.bus_factor}",
         ],
     }
+

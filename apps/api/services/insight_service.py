@@ -16,6 +16,7 @@ from apps.api.services.analytics_service import (
 
 from apps.api.services.ai_service import (
     generate_repository_summary,
+    generate_repository_insights,
 )
 
 def get_repository_insights(
@@ -40,10 +41,10 @@ def get_repository_insights(
         )
     )
 
-    raw_insights = (
-        generate_insights(
-            analytics.model_dump(),
-            trends,
+    ai_insights = (
+        generate_repository_insights(
+            repository,
+            analytics,
         )
     )
 
@@ -55,5 +56,5 @@ def get_repository_insights(
     return {
         "repository": repository.name,
         "summary": ai_summary,
-        "insights": raw_insights,
+        "insights": ai_insights,
     }
