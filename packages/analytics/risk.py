@@ -3,23 +3,22 @@ def calculate_risk(
 ):
     """
     Risk Score (0-100)
-
-    Higher = More Risk
+    Lower is better.
     """
 
     if bus_factor <= 1:
-        return 90
-
-    if bus_factor <= 2:
-        return 75
-
-    if bus_factor <= 3:
         return 60
 
+    if bus_factor <= 2:
+        return 45
+
+    if bus_factor <= 3:
+        return 35
+
     if bus_factor <= 5:
-        return 40
+        return 25
 
     if bus_factor <= 8:
-        return 25
+        return 15
 
     return 10

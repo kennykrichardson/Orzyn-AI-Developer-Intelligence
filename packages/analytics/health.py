@@ -6,23 +6,21 @@ def calculate_health_score(
 ):
     """
     Health Score (0-100)
-
-    Higher = Healthier Repository
     """
 
     bus_factor_score = min(
-        bus_factor * 20,
+        bus_factor * 25,
         100,
     )
 
     health_score = (
-        productivity_score * 0.35
-        + velocity_score * 0.25
-        + bus_factor_score * 0.20
-        + (100 - risk_score) * 0.20
+        productivity_score * 0.40
+        + velocity_score * 0.30
+        + bus_factor_score * 0.15
+        + (100 - risk_score) * 0.15
     )
 
     return round(
-        health_score,
+        min(health_score, 100),
         2,
     )
