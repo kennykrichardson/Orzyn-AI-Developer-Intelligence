@@ -2,10 +2,18 @@ def calculate_velocity(
     commit_count: int,
     contributor_count: int,
 ):
-    if contributor_count == 0:
-        return 0
+    """
+    Velocity Score (0-100)
+
+    Measures recent development activity.
+    """
+
+    score = min(
+        commit_count * 2,
+        100,
+    )
 
     return round(
-        commit_count / contributor_count,
+        score,
         2,
     )

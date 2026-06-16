@@ -2,8 +2,18 @@ def calculate_productivity(
     commit_count: int,
     pull_request_count: int,
 ):
-    return round(
-        (commit_count * 0.7)
-        + (pull_request_count * 1.3),
-        2,
+    """
+    Productivity Score (0-100)
+
+    Measures engineering output.
+    """
+
+    score = (
+        commit_count * 1.5
+        + pull_request_count * 4
+    )
+
+    return min(
+        round(score, 2),
+        100,
     )
