@@ -26,6 +26,8 @@ import RepositoryTimeline from "../components/RepositoryTimeline";
 
 import ForecastChart from "../components/ForecastChart";
 
+import ReactMarkdown from "react-markdown";
+
 import { useAnalytics } from "../hooks/useAnalytics";
 import {useContributors} from "../hooks/useContributors";
 import {useTrends} from "../hooks/useTrends";
@@ -296,11 +298,26 @@ value={
           </div>
 
           <div className="glass p-8 rounded-3xl">
-  <h2>
+  <h2
+  className="text-3xl font-black">
     AI Repository Overview
   </h2>
 
-  <p>{summary}</p>
+<div
+  className="
+  prose
+  prose-lg
+  max-w-none
+  prose-headings:font-black
+  prose-headings:text-black
+  prose-p:text-gray-700
+  prose-li:text-gray-700
+  "
+>
+  <ReactMarkdown>
+    {summary}
+  </ReactMarkdown>
+</div>
 </div>
 
         <InsightsPanel

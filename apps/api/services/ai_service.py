@@ -41,7 +41,8 @@ def _call_ai(
                     "role": "user",
                     "content": prompt,
                 }
-            ]
+            ],
+            "max_tokens": 1200,
         },
         timeout=60,
     )
@@ -120,35 +121,38 @@ Do not assume that a single contributor automatically indicates a poor repositor
 
 Treat solo-maintained repositories fairly.
 
-Format your response exactly as:
+Return your response in Markdown:
 
-1. Repository Overview
+# Repository Overview
    - Explain what the repository is.
    - Explain what problem it solves.
    - Highlight notable features.
 
-2. Key Strengths
+# Key Strengths
    - Technical strengths.
    - Architectural strengths.
    - Positive engineering signals.
 
-3. Engineering Assessment
+# Engineering Assessment
    - Discuss Health Score.
    - Discuss Productivity Score.
    - Discuss Velocity Score.
    - Explain what these scores mean.
 
-4. Risk Assessment
+# Risk Assessment
    - Explain risks.
    - Explain mitigating factors.
    - Avoid alarmist language.
 
-5. Recommendations
+# Recommendations
    - Prioritized improvements.
    - Short-term opportunities.
    - Long-term opportunities.
 
-Keep the response professional, concise, and actionable.
+Use markdown headings.
+Use bullet points for lists.
+Leave a blank line between sections.
+Keep paragraphs short.
 """
 
     return _call_ai(prompt)

@@ -1,6 +1,7 @@
 import { useRepository } from "../state/repositoryStore";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
+import ReactMarkdown from "react-markdown";
 
 interface ReportResponse {
   repository: {
@@ -84,36 +85,72 @@ export default function ReportPreview() {
   return (
     <div className="space-y-8">
       <div className="glass rounded-3xl shadow-xl p-8">
-        <h2 className="text-3xl font-black mb-6">
+        <h2 className="text-3xl font-black mb-8">
           AI Executive Summary
         </h2>
 
-        <p className="text-lg leading-8">
-          {reportData.report.summary}
-        </p>
+        <div
+  className="
+  prose
+  prose-lg
+  max-w-none
+  prose-headings:font-black
+  prose-headings:text-black
+  prose-p:text-gray-700
+  prose-li:text-gray-700
+  "
+>
+  <ReactMarkdown>
+    {reportData.report.summary}
+  </ReactMarkdown>
+</div>
       </div>
 
       {reportData.report.risk_assessment && (
         <div className="glass rounded-3xl shadow-xl p-8">
-          <h2 className="text-3xl font-black mb-6">
+          <h2 className="text-3xl font-black mb-8">
             AI Risk Assessment
           </h2>
 
-          <div className="whitespace-pre-wrap leading-8">
-            {reportData.report.risk_assessment}
-          </div>
+          <div
+  className="
+  prose
+  prose-lg
+  max-w-none
+  prose-headings:font-black
+  prose-headings:text-black
+  prose-p:text-gray-700
+  prose-li:text-gray-700
+  "
+>
+  <ReactMarkdown>
+    {reportData.report.risk_assessment}
+  </ReactMarkdown>
+</div>
         </div>
       )}
 
       {reportData.report.roadmap && (
         <div className="glass rounded-3xl shadow-xl p-8">
-          <h2 className="text-3xl font-black mb-6">
+          <h2 className="text-3xl font-black mb-8">
             AI Improvement Roadmap
           </h2>
 
-          <div className="whitespace-pre-wrap leading-8">
-            {reportData.report.roadmap}
-          </div>
+          <div
+  className="
+  prose
+  prose-lg
+  max-w-none
+  prose-headings:font-black
+  prose-headings:text-black
+  prose-p:text-gray-700
+  prose-li:text-gray-700
+  "
+>
+  <ReactMarkdown>
+    {reportData.report.roadmap}
+  </ReactMarkdown>
+</div>
         </div>
       )}
 
@@ -174,7 +211,8 @@ export default function ReportPreview() {
                 className="
                 glass
                 rounded-2xl
-                p-4
+                p-5
+                leading-7
                 "
               >
                 {insight}
