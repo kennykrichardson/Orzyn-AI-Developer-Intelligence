@@ -111,22 +111,20 @@ console.log(
     </div>
   )}
 
-  <CommandCenterHero
-    healthScore={
-      analytics?.health_score ?? 0
-    }
-    velocityScore={
-      analytics?.velocity_score ?? 0
-    }
-    contributors={
-      contributors.length
-    }
-    riskLabel={
-      (analytics?.risk_score ?? 0) > 50
-        ? "High"
-        : "Low"
-    }
-  />
+<CommandCenterHero
+  healthScore={
+    analytics?.health_score ?? 0
+  }
+  velocityScore={
+    analytics?.velocity_score ?? 0
+  }
+  busFactor={
+    analytics?.bus_factor ?? 0
+  }
+  riskScore={
+    analytics?.risk_score ?? 0
+  }
+/>
 </div>
       <div
         className="
@@ -199,11 +197,11 @@ console.log(
   title="Risk"
   value={analytics?.risk_score ?? 0}
   subtitle={
-    (analytics?.risk_score ?? 0) > 70
-      ? "High"
-      : (analytics?.risk_score ?? 0) > 40
-      ? "Medium"
-      : "Low"
+    (analytics?.risk_score ?? 0) >= 70
+      ? "High Risk"
+      : (analytics?.risk_score ?? 0) >= 40
+      ? "Moderate Risk"
+      : "Low Risk"
   }
 />
           </div>

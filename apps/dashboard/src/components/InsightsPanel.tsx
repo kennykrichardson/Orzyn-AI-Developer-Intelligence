@@ -1,54 +1,90 @@
 interface Props {
   insights: string[];
 }
+
 import EmptyState from "./EmptyState";
 
 export default function InsightsPanel({
   insights,
 }: Props) {
-  const colors = [
-    "bg-green-500",
-    "bg-yellow-500",
-    "bg-red-500",
-  ];
+  if (
+    !insights ||
+    insights.length === 0
+  ) {
+    return (
+      <EmptyState
+        title="No Intelligence Available"
+        description="
+        Analyze a repository
+        to generate AI-powered
+        engineering insights.
+        "
+      />
+    );
+  }
 
-if (
-  !insights ||
-  insights.length === 0
-) {
-  return (
-    <EmptyState
-      title="No Insights Yet"
-      description="
-      Run repository analysis
-      to generate intelligence.
-      "
-    />
-  );
-}
+  const getColor = (
+    insight: string
+  ) => {
+    const text =
+      insight.toLowerCase();
+
+    if (
+      text.includes("risk") ||
+      text.includes("warning")
+    ) {
+      return "bg-red-500";
+    }
+
+    if (
+      text.includes("health") ||
+      text.includes("improve")
+    ) {
+      return "bg-yellow-500";
+    }
+
+    return "bg-green-500";
+  };
 
   return (
     <div
       className="
       glass
-
       rounded-3xl
-
       shadow-xl
-
       p-8
       "
     >
-      <h2
+      <div
         className="
-        text-2xl
-        font-bold
-
-        mb-6
+        flex
+        items-center
+        justify-between
+        mb-8
         "
       >
-        AI Insights
-      </h2>
+        <div>
+          <h2
+            className="
+            text-3xl
+            font-black
+            "
+          >
+            AI Insights
+          </h2>
+
+          <p
+            className="
+            text-gray-500
+            mt-2
+            "
+          >
+            Engineering observations,
+            repository intelligence,
+            and improvement signals.
+          </p>
+        </div>
+      </div>
 
       <div className="space-y-5">
         {insights.map(
@@ -63,10 +99,15 @@ if (
               items-start
               gap-4
 
-              py-4
+              p-5
 
-              border-b
-              border-gray-100
+              rounded-2xl
+
+              bg-black/5
+
+              hover:bg-black/10
+
+              transition-all
               "
             >
               <div
@@ -78,24 +119,34 @@ if (
 
                 mt-2
 
-                ${
-                  colors[
-                    index %
-                      colors.length
-                  ]
-                }
+                ${getColor(
+                  insight
+                )}
                 `}
               />
 
-              <p
-                className="
-                text-gray-700
+              <div className="flex-1">
+                <div
+                  className="
+                  text-sm
+                  uppercase
+                  tracking-wider
+                  text-gray-500
+                  mb-2
+                  "
+                >
+                  Insight #{index + 1}
+                </div>
 
-                leading-relaxed
-                "
-              >
-                {insight}
-              </p>
+                <p
+                  className="
+                  text-gray-700
+                  leading-relaxed
+                  "
+                >
+                  {insight}
+                </p>
+              </div>
             </div>
           )
         )}

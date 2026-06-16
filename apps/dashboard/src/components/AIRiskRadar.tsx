@@ -8,11 +8,25 @@ export default function AIRiskRadar({
   busFactor,
 }: Props) {
   const level =
-    riskScore > 70
+    riskScore >= 70
       ? "HIGH"
-      : riskScore > 40
-      ? "MEDIUM"
+      : riskScore >= 40
+      ? "MODERATE"
       : "LOW";
+
+  const color =
+    riskScore >= 70
+      ? "text-red-500"
+      : riskScore >= 40
+      ? "text-yellow-500"
+      : "text-green-500";
+
+  const explanation =
+    riskScore >= 70
+      ? "Repository continuity risk is elevated. Additional maintainers are recommended."
+      : riskScore >= 40
+      ? "Repository risk is manageable but contributor concentration should be monitored."
+      : "Repository risk appears stable and acceptable for current activity levels.";
 
   return (
     <div
@@ -23,7 +37,12 @@ export default function AIRiskRadar({
       shadow-xl
       "
     >
-      <h2 className="text-2xl font-bold">
+      <h2
+        className="
+        text-2xl
+        font-bold
+        "
+      >
         AI Risk Radar
       </h2>
 
@@ -33,39 +52,45 @@ export default function AIRiskRadar({
         </div>
 
         <div
-          className="
+          className={`
           text-5xl
           font-black
-          text-red-500
-          "
+          ${color}
+          `}
         >
           {level}
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-8 space-y-2">
         <div>
           Risk Score:
           {" "}
-          {riskScore}
+          <strong>
+            {riskScore}
+          </strong>
         </div>
 
         <div>
           Bus Factor:
           {" "}
-          {busFactor}
+          <strong>
+            {busFactor}
+          </strong>
         </div>
       </div>
 
       <div
         className="
-        mt-6
-        text-gray-600
+        mt-8
+        rounded-2xl
+        bg-black/5
+        p-4
+        text-gray-700
+        leading-relaxed
         "
       >
-        {riskScore > 40
-          ? "Contributor concentration risk increasing."
-          : "Repository risk remains stable."}
+        {explanation}
       </div>
     </div>
   );

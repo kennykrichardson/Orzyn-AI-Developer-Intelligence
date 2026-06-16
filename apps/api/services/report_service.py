@@ -41,7 +41,8 @@ def generate_repository_report(
     )
 
     report = create_ai_report(
-        repository_data
+        repository_data,
+        metrics,
     )
 
     db = SessionLocal()

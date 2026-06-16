@@ -22,17 +22,16 @@ interface ReportResponse {
   report: {
     summary: string;
     insights: string[];
+    risk_assessment?: string;
+    roadmap?: string;
   };
 }
 
 export default function ReportPreview() {
-  const { owner, repo } =
-    useRepository();
+  const { owner, repo } = useRepository();
 
   const [reportData, setReportData] =
-    useState<ReportResponse | null>(
-      null
-    );
+    useState<ReportResponse | null>(null);
 
   const [loading, setLoading] =
     useState(true);
@@ -49,11 +48,6 @@ export default function ReportPreview() {
 
         const data =
           (await response.json()) as ReportResponse;
-
-        console.log(
-          "REPORT DATA",
-          data
-        );
 
         setReportData(data);
       } catch (error) {
@@ -73,173 +67,142 @@ export default function ReportPreview() {
 
   if (loading) {
     return (
-      <div
-        className="
-        glass
-        rounded-3xl
-        shadow-xl
-        p-8
-        "
-      >
-        <h2
-          className="
-          text-2xl
-          font-bold
-          "
-        >
-          <Loader/>
-        </h2>
+      <div className="glass rounded-3xl shadow-xl p-8">
+        <Loader />
       </div>
     );
   }
 
   if (!reportData) {
     return (
-      <div
-        className="
-        glass
-        rounded-3xl
-        shadow-xl
-        p-8
-        "
-      >
+      <div className="glass rounded-3xl shadow-xl p-8">
         Failed to load report.
       </div>
     );
   }
 
   return (
-    <div
-      className="
-      glass
-      rounded-3xl
-      shadow-xl
-      p-8
-      "
-    >
-      <h2
-        className="
-        text-3xl
-        font-black
-        mb-8
-        "
-      >
-        Executive Summary
-      </h2>
+    <div className="space-y-8">
+      <div className="glass rounded-3xl shadow-xl p-8">
+        <h2 className="text-3xl font-black mb-6">
+          AI Executive Summary
+        </h2>
 
-      <p
-        className="
-        text-lg
-        leading-8
-        mb-10
-        "
-      >
-        {reportData.report.summary}
-      </p>
+        <p className="text-lg leading-8">
+          {reportData.report.summary}
+        </p>
+      </div>
 
-      <div
-        className="
-        grid
-        md:grid-cols-5
-        gap-4
-        mb-10
-        "
-      >
-        <div className="glass rounded-2xl p-4">
-          <p className="text-gray-500">
-            Health
-          </p>
+      {reportData.report.risk_assessment && (
+        <div className="glass rounded-3xl shadow-xl p-8">
+          <h2 className="text-3xl font-black mb-6">
+            AI Risk Assessment
+          </h2>
 
-          <p className="text-2xl font-bold">
-            {
-              reportData.metrics
-                .health_score
-            }
-          </p>
+          <div className="whitespace-pre-wrap leading-8">
+            {reportData.report.risk_assessment}
+          </div>
         </div>
+      )}
 
-        <div className="glass rounded-2xl p-4">
-          <p className="text-gray-500">
-            Productivity
-          </p>
+      {reportData.report.roadmap && (
+        <div className="glass rounded-3xl shadow-xl p-8">
+          <h2 className="text-3xl font-black mb-6">
+            AI Improvement Roadmap
+          </h2>
 
-          <p className="text-2xl font-bold">
-            {
+          <div className="whitespace-pre-wrap leading-8">
+            {reportData.report.roadmap}
+          </div>
+        </div>
+      )}
+
+      <div className="glass rounded-3xl shadow-xl p-8">
+        <h2 className="text-3xl font-black mb-6">
+          Repository Metrics
+        </h2>
+
+        <div className="grid md:grid-cols-5 gap-4">
+          <Metric
+            title="Health"
+            value={
+              reportData.metrics.health_score
+            }
+          />
+
+          <Metric
+            title="Productivity"
+            value={
               reportData.metrics
                 .productivity_score
             }
-          </p>
-        </div>
+          />
 
-        <div className="glass rounded-2xl p-4">
-          <p className="text-gray-500">
-            Velocity
-          </p>
-
-          <p className="text-2xl font-bold">
-            {
-              reportData.metrics
-                .velocity_score
+          <Metric
+            title="Velocity"
+            value={
+              reportData.metrics.velocity_score
             }
-          </p>
-        </div>
+          />
 
-        <div className="glass rounded-2xl p-4">
-          <p className="text-gray-500">
-            Risk
-          </p>
-
-          <p className="text-2xl font-bold">
-            {
-              reportData.metrics
-                .risk_score
+          <Metric
+            title="Risk"
+            value={
+              reportData.metrics.risk_score
             }
-          </p>
-        </div>
+          />
 
-        <div className="glass rounded-2xl p-4">
-          <p className="text-gray-500">
-            Bus Factor
-          </p>
-
-          <p className="text-2xl font-bold">
-            {
-              reportData.metrics
-                .bus_factor
+          <Metric
+            title="Bus Factor"
+            value={
+              reportData.metrics.bus_factor
             }
-          </p>
+          />
         </div>
       </div>
 
-      <h3
-        className="
-        text-2xl
-        font-bold
-        mb-4
-        "
-      >
-        Engineering Insights
-      </h3>
+      <div className="glass rounded-3xl shadow-xl p-8">
+        <h2 className="text-3xl font-black mb-6">
+          Engineering Insights
+        </h2>
 
-      <div className="space-y-4">
-        {reportData.report.insights.map(
-          (
-            insight,
-            index
-          ) => (
-            <div
-              key={index}
-              className="
-              glass
-              rounded-2xl
-              p-4
-              "
-            >
-              {insight}
-            </div>
-          )
-        )}
+        <div className="space-y-4">
+          {reportData.report.insights.map(
+            (insight, index) => (
+              <div
+                key={index}
+                className="
+                glass
+                rounded-2xl
+                p-4
+                "
+              >
+                {insight}
+              </div>
+            )
+          )}
+        </div>
       </div>
+    </div>
+  );
+}
+
+function Metric({
+  title,
+  value,
+}: {
+  title: string;
+  value: number;
+}) {
+  return (
+    <div className="glass rounded-2xl p-4">
+      <p className="text-gray-500">
+        {title}
+      </p>
+
+      <p className="text-2xl font-bold">
+        {value}
+      </p>
     </div>
   );
 }

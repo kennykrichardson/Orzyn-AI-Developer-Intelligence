@@ -14,6 +14,9 @@ from apps.api.services.analytics_service import (
     calculate_repository_metrics,
 )
 
+from apps.api.services.ai_service import (
+    generate_repository_summary,
+)
 
 def get_repository_insights(
     owner: str,
@@ -37,14 +40,19 @@ def get_repository_insights(
         )
     )
 
-    insights = (
+    raw_insights = (
         generate_insights(
             analytics.model_dump(),
             trends,
         )
     )
 
+    ai_summary = generate_repository_summary(
+        repository,
+        analytics,
+    )
+
     return {
         "repository": repository.name,
-        "insights": insights,
+        "insights": raw_insights,
     }

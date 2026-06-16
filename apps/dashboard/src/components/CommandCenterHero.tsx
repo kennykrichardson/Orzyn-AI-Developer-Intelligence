@@ -4,16 +4,23 @@ import ExportReportButton from "./ExportReportButton";
 interface CommandCenterHeroProps {
   healthScore: number;
   velocityScore: number;
-  contributors: number;
-  riskLabel: string;
+  busFactor: number;
+  riskScore: number;
 }
 
 export default function CommandCenterHero({
   healthScore,
   velocityScore,
-  contributors,
-  riskLabel,
+  busFactor,
+  riskScore,
 }: CommandCenterHeroProps) {
+  const riskLabel =
+    riskScore >= 70
+      ? "HIGH"
+      : riskScore >= 40
+      ? "MODERATE"
+      : "LOW";
+
   return (
     <div
       className="
@@ -64,7 +71,7 @@ export default function CommandCenterHero({
           text-sm
           "
         >
-          Repository Command Center
+          AI-Powered Engineering Intelligence
         </div>
 
         <h1
@@ -75,7 +82,7 @@ export default function CommandCenterHero({
           font-black
           "
         >
-          Engineering Intelligence
+          Repository Command Center
         </h1>
 
         <p
@@ -86,10 +93,10 @@ export default function CommandCenterHero({
           "
         >
           Analyze repository health,
-          contributor concentration,
-          productivity trends,
+          contributor resilience,
           engineering velocity,
-          and long-term project risk.
+          development risk,
+          and AI-generated recommendations.
         </p>
 
         <div
@@ -102,17 +109,19 @@ export default function CommandCenterHero({
         >
           <div>
             <div className="text-zinc-500">
-              Health Score
+              Health
             </div>
 
             <div
               className="
               text-5xl
               font-black
-              text-red-400
+              text-green-400
               "
             >
-              {Math.round(healthScore)}
+              {Math.round(
+                healthScore
+              )}
             </div>
           </div>
 
@@ -127,13 +136,15 @@ export default function CommandCenterHero({
               font-black
               "
             >
-              {Math.round(velocityScore)}
+              {Math.round(
+                velocityScore
+              )}
             </div>
           </div>
 
           <div>
             <div className="text-zinc-500">
-              Contributors
+              Bus Factor
             </div>
 
             <div
@@ -142,7 +153,7 @@ export default function CommandCenterHero({
               font-black
               "
             >
-              {contributors}
+              {busFactor}
             </div>
           </div>
 
@@ -155,7 +166,7 @@ export default function CommandCenterHero({
               className="
               text-5xl
               font-black
-              text-red-400
+              text-yellow-400
               "
             >
               {riskLabel}
@@ -178,8 +189,7 @@ export default function CommandCenterHero({
             Compare Repository
           </AnimatedButton>
 
-            <ExportReportButton />
-        
+          <ExportReportButton />
         </div>
       </div>
     </div>

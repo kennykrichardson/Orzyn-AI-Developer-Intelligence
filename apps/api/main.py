@@ -11,6 +11,9 @@ from apps.api.routes.insights import router as insights_router
 from packages.database.engine import engine
 from packages.database.engine import Base
 import packages.database.models
+from apps.api.routes.ai import (
+    router as ai_router,
+)
 
 app = FastAPI(
     title="Orzyn AI",
@@ -29,6 +32,7 @@ app.include_router(history_router)
 app.include_router(trends_router)
 app.include_router(comparison_router)
 app.include_router(insights_router)
+app.include_router(ai_router)
 # CORS Configuration
 app.add_middleware(
     CORSMiddleware,

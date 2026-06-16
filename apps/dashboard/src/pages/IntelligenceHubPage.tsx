@@ -4,10 +4,12 @@ import ForecastCard from "../components/ForecastCard";
 import ForecastChart from "../components/ForecastChart";
 import AIRiskRadar from "../components/AIRiskRadar";
 import ContributorHeatmap from "../components/ContributorHeatmap";
+import InsightsPanel from "../components/InsightsPanel";
 
 import { useAnalytics } from "../hooks/useAnalytics";
 import { useRepository } from "../state/repositoryStore";
 import { useInsights } from "../hooks/useInsights";
+
 import Loader from "../components/Loader";
 
 export default function IntelligenceHubPage() {
@@ -16,10 +18,10 @@ export default function IntelligenceHubPage() {
     repo,
   } = useRepository();
 
-if (!owner || !repo) {
-  return (
-    <DashboardLayout>
-            <div
+  if (!owner || !repo) {
+    return (
+      <DashboardLayout>
+        <div
           className="
           flex
           items-center
@@ -29,21 +31,21 @@ if (!owner || !repo) {
         >
           <Loader />
         </div>
-        
+
         <div
-        className="
-        flex
-        items-center
-        justify-center
-        font-bold
-        text-xl
-        "
+          className="
+          flex
+          items-center
+          justify-center
+          font-bold
+          text-xl
+          "
         >
-        Search for a repository...
+          Search for a repository...
         </div>
-    </DashboardLayout>
-  );
-}
+      </DashboardLayout>
+    );
+  }
 
   const {
     analytics,
@@ -62,21 +64,21 @@ if (!owner || !repo) {
   );
 
   if (loading || !analytics) {
-  return (
-    <DashboardLayout>
-      <div
-        className="
-        flex
-        items-center
-        justify-center
-        min-h-[70vh]
-        "
-      >
-        <Loader />
-      </div>
-    </DashboardLayout>
-  );
-}
+    return (
+      <DashboardLayout>
+        <div
+          className="
+          flex
+          items-center
+          justify-center
+          min-h-[70vh]
+          "
+        >
+          <Loader />
+        </div>
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>
@@ -184,6 +186,14 @@ if (!owner || !repo) {
           },
         ]}
       />
+
+      <div className="mt-8">
+        <InsightsPanel
+          insights={
+            insights || []
+          }
+        />
+      </div>
     </DashboardLayout>
   );
 }

@@ -4,8 +4,7 @@ interface MetricCardProps {
   subtitle: string;
 }
 
-import {motion} from "framer-motion";
-
+import { motion } from "framer-motion";
 import CountUp from "react-countup";
 
 export default function MetricCard({
@@ -13,42 +12,58 @@ export default function MetricCard({
   value,
   subtitle,
 }: MetricCardProps) {
+  const numericValue =
+    Number(value);
+
+  const getColor = () => {
+    if (
+      title
+        .toLowerCase()
+        .includes("risk")
+    ) {
+      if (numericValue >= 70)
+        return "text-red-500";
+
+      if (numericValue >= 40)
+        return "text-yellow-500";
+
+      return "text-green-500";
+    }
+
+    if (numericValue >= 70)
+      return "text-green-500";
+
+    if (numericValue >= 40)
+      return "text-yellow-500";
+
+    return "text-red-500";
+  };
+
   return (
     <motion.div
-    initial={{
-  opacity: 0,
-  y: 20,
-}}
-
-animate={{
-  opacity: 1,
-  y: 0,
-}}
-
-whileHover={{
-  y: -6,
-  scale: 1.02,
-}}
-
-transition={{
-  duration: 0.25,
-}}
+      initial={{
+        opacity: 0,
+        y: 20,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      whileHover={{
+        y: -6,
+        scale: 1.02,
+      }}
+      transition={{
+        duration: 0.25,
+      }}
       className="
       glass/75
-
       backdrop-blur-md
-
       rounded-3xl
-
       p-6
-
       border
       border-white
-
       shadow-xl
-
-      hover:-translate-y-1
-
       transition-all
       "
     >
@@ -56,19 +71,25 @@ transition={{
         {title}
       </div>
 
-      <div className="text-5xl font-black mt-4">
+      <div
+        className={`
+        text-5xl
+        font-black
+        mt-4
+        ${getColor()}
+        `}
+      >
         <CountUp
-  end={Number(value)}
-  duration={1.4}
-/>
+          end={numericValue}
+          duration={1.4}
+        />
       </div>
 
       <div
         className="
-        text-red-600
         font-semibold
-
         mt-4
+        text-gray-500
         "
       >
         {subtitle}
