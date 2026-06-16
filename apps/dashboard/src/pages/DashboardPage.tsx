@@ -74,6 +74,7 @@ const {
 );
 const {
   insights,
+  summary,
 } = useInsights(
   owner,
   repo
@@ -294,11 +295,19 @@ value={
             </HoverCard>
           </div>
 
-          <InsightsPanel
-  insights={
-    insights?.insights ?? []
-  }
-/>
+          <div className="glass p-8 rounded-3xl">
+  <h2>
+    AI Repository Overview
+  </h2>
+
+  <p>{summary}</p>
+</div>
+
+        <InsightsPanel
+          insights={
+            insights || []
+          }
+        />
 
 <div
   className="
@@ -394,19 +403,18 @@ value={
         Health
       </p>
 
-      <p
-        className="
-        text-red-500
-        font-bold
-        text-2xl
-        "
-      >
-        {(analytics?.health_score ?? 0) >= 80
-          ? "Excellent"
-          : (analytics?.health_score ?? 0) >= 60
-          ? "Good"
-          : "At Risk"}
-      </p>
+<p
+  className="
+  font-bold
+  text-2xl
+  "
+>
+  {(analytics?.health_score ?? 0) >= 70
+    ? "Excellent"
+    : (analytics?.health_score ?? 0) >= 40
+    ? "Stable"
+    : "Needs Attention"}
+</p>
     </div>
 
     <div>

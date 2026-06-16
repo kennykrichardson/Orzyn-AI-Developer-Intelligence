@@ -5,6 +5,7 @@ import {
 
 import {
   getInsights,
+  AIInsightResponse,
 } from "../api/insightApi";
 
 export function useInsights(
@@ -14,7 +15,12 @@ export function useInsights(
   const [
     insights,
     setInsights,
-  ] = useState<any>(null);
+  ] = useState<string[]>([]);
+
+  const [
+    summary,
+    setSummary,
+  ] = useState("");
 
   const [
     loading,
@@ -24,14 +30,19 @@ export function useInsights(
   useEffect(() => {
     async function load() {
       try {
-        const data =
+        const data:
+          AIInsightResponse =
           await getInsights(
             owner,
             repo
           );
 
         setInsights(
-          data
+          data.insights || []
+        );
+
+        setSummary(
+          data.summary || ""
         );
       } catch (
         error
@@ -43,13 +54,16 @@ export function useInsights(
         setLoading(false);
       }
     }
-     if (!owner || !repo)
-    return;
+
+    if (!owner || !repo)
+      return;
+
     load();
   }, [owner, repo]);
 
   return {
     insights,
+    summary,
     loading,
   };
 }

@@ -54,5 +54,6 @@ def get_repository_insights(
 
     return {
         "repository": repository.name,
+        "summary": ai_summary,
         "insights": raw_insights,
     }

@@ -8,7 +8,6 @@ import InsightsPanel from "../components/InsightsPanel";
 
 import { useAnalytics } from "../hooks/useAnalytics";
 import { useRepository } from "../state/repositoryStore";
-import { useInsights } from "../hooks/useInsights";
 
 import Loader from "../components/Loader";
 
@@ -52,13 +51,6 @@ export default function IntelligenceHubPage() {
     history,
     loading,
   } = useAnalytics(
-    owner,
-    repo
-  );
-
-  const {
-    insights,
-  } = useInsights(
     owner,
     repo
   );
@@ -186,14 +178,6 @@ export default function IntelligenceHubPage() {
           },
         ]}
       />
-
-      <div className="mt-8">
-        <InsightsPanel
-          insights={
-            insights || []
-          }
-        />
-      </div>
     </DashboardLayout>
   );
 }

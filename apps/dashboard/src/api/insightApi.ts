@@ -1,6 +1,8 @@
-import {
-  InsightData,
-} from "../types/analytics";
+export interface AIInsightResponse {
+  repository: string;
+  summary: string;
+  insights: string[];
+}
 
 const API_BASE =
   "https://orzyn-api.onrender.com";
@@ -8,7 +10,7 @@ const API_BASE =
 export async function getInsights(
   owner: string,
   repo: string
-): Promise<InsightData> {
+): Promise<AIInsightResponse> {
   const response =
     await fetch(
       `${API_BASE}/insights/${owner}/${repo}`
