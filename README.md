@@ -19,13 +19,20 @@ Analyze repository health, engineering velocity, contributor concentration, proj
 * Bus Factor Evaluation
 * Historical Performance Monitoring
 
-### 🤖 AI Intelligence
+### 🤖 AI & Analytics
 
-* AI-Generated Repository Insights
-* Executive Summaries
-* Engineering Intelligence Reports
-* Trend Analysis
-* Repository Health Forecasting
+* Cloudflare Workers AI Integration
+* Llama 3.3 Powered Analysis
+* Repository Intelligence Engine
+* AI Executive Summary Generation
+* AI Risk Assessment Generation
+* AI Engineering Roadmap Generation
+* Contributor Risk Analysis
+* Engineering Velocity Analysis
+* Productivity Scoring
+* Health Score Calculation
+* Forecasting Engine
+* Repository Health Analytics
 
 ### 📈 Visual Dashboards
 
@@ -207,13 +214,38 @@ Generate AI-powered engineering insights and repository intelligence.
 
 ### 📄 Reports
 
-Executive summaries, contributor analysis, and repository reports.
+Generate AI-powered executive summaries, repository risk assessments, engineering roadmaps, contributor intelligence, and repository health reports.
 
 ---
 
 ## 🔍 Risk Assessment
 
-Repositories with a single contributor naturally receive higher risk scores due to increased dependency on one developer for maintenance, knowledge retention, and long-term project continuity.
+Orzyn AI uses a multi-factor repository risk model that evaluates:
+
+* Contributor concentration
+* Engineering velocity
+* Repository health
+* Project activity
+* Productivity trends
+
+Single-contributor repositories are not automatically classified as high risk. Risk is evaluated in the broader context of repository health and engineering performance.
+
+---
+
+## 🧠 AI-Powered Engineering Intelligence
+
+Orzyn AI leverages Cloudflare Workers AI and Llama 3.3 models to transform repository analytics into actionable engineering intelligence.
+
+Generated outputs include:
+
+* Repository Overview
+* Executive Summaries
+* Risk Assessments
+* Engineering Roadmaps
+* Improvement Recommendations
+* Engineering Insights
+
+The AI system combines repository metadata, analytics, contributor information, velocity metrics, and health indicators to provide context-aware analysis.
 
 ---
 
@@ -224,6 +256,42 @@ Repositories with a single contributor naturally receive higher risk scores due 
 * Identify contributor concentration risks.
 * Provide actionable engineering insights.
 * Deliver executive-level repository reporting.
+
+---
+
+## ☁️ Deployment
+
+### Frontend
+
+* React
+* Vite
+* Render Static Site
+
+### Backend
+
+* FastAPI
+* Render Web Service
+
+### AI Layer
+
+* Cloudflare Workers AI
+* Llama 3.3 70B Instruct
+
+### Data Source
+
+* GitHub REST API
+
+---
+
+## 🌐 Live Application
+
+### Frontend:
+
+https://orzyn-ai.onrender.com
+
+### Backend API:
+
+https://orzyn-api.onrender.com
 
 ---
 
