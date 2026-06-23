@@ -46,12 +46,19 @@ if (!owner || !repo) {
   return (
     <DashboardLayout>
       <div className="space-y-10">
-        <h1
-          className="
-          text-4xl
-          font-black
-          "
-        >
+      <h1
+        className="
+        text-3xl
+        sm:text-4xl
+        md:text-5xl
+
+        font-black
+
+        leading-tight
+
+        mb-8
+        "
+      >
           Executive Reports
         </h1>
 

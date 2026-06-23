@@ -60,16 +60,17 @@ export default function DashboardLayout({
         setIsOpen={setSidebarOpen}
       />
 
-      <main
-        className="
-        min-h-screen
+<main
+  className="
+  min-h-screen
 
-        pl-24
-        pr-8
-        pt-8
-        pb-8
-        "
-      >
+  px-3
+  md:px-6
+
+  pt-8
+  pb-8
+  "
+>
         <TopbarWithSidebarOpen
           setSidebarOpen={
             setSidebarOpen

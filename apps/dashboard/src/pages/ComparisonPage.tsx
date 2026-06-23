@@ -22,9 +22,13 @@ const { contributors } =
 
       <h1
         className="
-        text-4xl
+        text-3xl
+        sm:text-4xl
+        md:text-5xl
 
         font-black
+
+        leading-tight
 
         mb-8
         "

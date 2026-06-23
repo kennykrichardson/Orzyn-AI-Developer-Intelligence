@@ -44,8 +44,11 @@ export default function CommandCenterHero({
         top-0
         right-0
 
-        w-[500px]
-        h-[500px]
+        w-[250px]
+        h-[250px]
+
+        md:w-[500px]
+        md:h-[500px]
 
         rounded-full
 
@@ -55,7 +58,15 @@ export default function CommandCenterHero({
         "
       />
 
-      <div className="p-10 relative z-10">
+      <div
+        className="
+        p-6
+        md:p-10
+
+        relative
+        z-10
+        "
+      >
         <div
           className="
           inline-flex
@@ -74,14 +85,19 @@ export default function CommandCenterHero({
           AI-Powered Engineering Intelligence
         </div>
 
-        <h1
-          className="
-          mt-5
-          text-6xl
-          xl:text-7xl
-          font-black
-          "
-        >
+<h1
+  className="
+  mt-5
+
+  text-4xl
+  md:text-5xl
+  xl:text-7xl
+
+  font-black
+
+  leading-tight
+  "
+>
           Repository Command Center
         </h1>
 
@@ -89,7 +105,8 @@ export default function CommandCenterHero({
           className="
           mt-4
           text-zinc-400
-          max-w-3xl
+          max-w-full
+          md:max-w-3xl
           "
         >
           Analyze repository health,
@@ -100,12 +117,16 @@ export default function CommandCenterHero({
         </p>
 
         <div
-          className="
-          grid
-          grid-cols-4
-          gap-8
-          mt-10
-          "
+className="
+grid
+
+grid-cols-2
+md:grid-cols-4
+
+gap-6
+
+mt-10
+"
         >
           <div>
             <div className="text-zinc-500">
@@ -114,7 +135,8 @@ export default function CommandCenterHero({
 
             <div
               className="
-              text-5xl
+              text-3xl
+              md:text-5xl
               font-black
               text-green-400
               "
@@ -132,7 +154,8 @@ export default function CommandCenterHero({
 
             <div
               className="
-              text-5xl
+              text-3xl
+              md:text-5xl
               font-black
               "
             >
@@ -149,7 +172,8 @@ export default function CommandCenterHero({
 
             <div
               className="
-              text-5xl
+              text-3xl
+              md:text-5xl
               font-black
               "
             >
@@ -164,7 +188,8 @@ export default function CommandCenterHero({
 
             <div
               className="
-              text-5xl
+              text-3xl
+              md:text-5xl
               font-black
               text-yellow-400
               "
@@ -177,7 +202,12 @@ export default function CommandCenterHero({
         <div
           className="
           flex
+
+          flex-col
+          sm:flex-row
+
           gap-4
+
           mt-10
           "
         >

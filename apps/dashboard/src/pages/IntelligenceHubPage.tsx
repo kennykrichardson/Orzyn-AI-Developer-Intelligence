@@ -76,8 +76,14 @@ export default function IntelligenceHubPage() {
     <DashboardLayout>
       <h1
         className="
-        text-5xl
+        text-3xl
+        sm:text-4xl
+        md:text-5xl
+
         font-black
+
+        leading-tight
+
         mb-8
         "
       >

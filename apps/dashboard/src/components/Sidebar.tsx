@@ -1,5 +1,4 @@
 import {
-  Menu,
   X,
   LayoutDashboard,
   GitCompare,
@@ -82,30 +81,59 @@ export default function Sidebar({
           onClick={() =>
             setIsOpen(true)
           }
-          className="
-          fixed
-          top-6
-          left-6
+className="
+fixed
 
-          z-[30]
+-top-1
+-left-1
 
-          w-14
-          h-14
+z-[60]
 
-          rounded-2xl
+w-12
+h-12
 
-          bg-black
+bg-[#CC3536]
 
-          text-white
+text-white
 
-          shadow-2xl
+shadow-xl
 
-          flex
-          items-center
-          justify-center
-          "
+rounded-none
+rounded-br-xl
+
+flex
+items-center
+justify-center
+"
         >
-          <Menu size={22} />
+          <div className="flex flex-col gap-[5px]">
+  <div
+    className="
+    w-7
+    h-[3px]
+    bg-[#292323]
+    rounded-full
+    "
+  />
+
+    <div
+    className="
+    w-7
+    h-[3px]
+    bg-[#292323]
+    rounded-full
+    "
+  />
+
+  <div
+    className="
+    w-5
+    h-[3px]
+    bg-[#292323]
+    rounded-full
+    "
+  />
+</div>
         </motion.button>
       )}
 
